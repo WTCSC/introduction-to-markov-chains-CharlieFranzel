@@ -1,11 +1,12 @@
 import random
-
+import argparse
+parser = argparse.ArgumentParser(description="Argparse")
 """
 Create the sample text and the dictionary to store word transitions
 
 TODO: Replace the sample text with a larger text for more interesting results
 """
-text = "Mary had a little lamb its fleece was white as snow"
+text = "In the quiet town, there was a small bakery, and in this bakery, the smell of fresh bread filled the air every morning. People would come from all around the town, drawn by the warm, comforting smell. The bakery owner, an older man with a friendly smile, greeted everyone who came in. Inside the bakery, shelves were filled with bread, pastries, and cakes, each one freshly baked and ready to enjoy. For the people of the town, the bakery was more than just a place to buy bread; it was a place to connect, to share a smile, and to start the day with something warm and comforting."
 transitions = {}
 
 """
@@ -57,4 +58,7 @@ Example usage, generating 10 words starting with "Mary"
 
 TODO: Accept user input for the starting word and number of words to generate
 """
-print(generate_text("Mary", 10))
+parser.add_argument("start", help="Starting word")  # Positional argument
+parser.add_argument("wordcount", help="Number of words to generate")
+args = parser.parse_args()
+print(generate_text(args.start, int(args.wordcount)))
