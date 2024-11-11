@@ -51,14 +51,18 @@ def generate_text(start_word, num_words):
             current_word = next_word
         else:
             break
-    return " ".join(result)
+    raw = " ".join(result) # All this ensures that the sentences start with a capitol letter
+    raw = raw.split('.')
+    raw = [raw.capitalize() for raw in raw]
+    return ' '.join(raw)  # Returns the function
+
 
 """
 Example usage, generating 10 words starting with "Mary"
 
 TODO: Accept user input for the starting word and number of words to generate
 """
-parser.add_argument("start", help="Starting word")  # Positional argument
-parser.add_argument("wordcount", help="Number of words to generate")
+parser.add_argument("start", help="Starting word")  # Adds the starting word argument   
+parser.add_argument("wordcount", help="Number of words to generate") # Adds the word count argument
 args = parser.parse_args()
-print(generate_text(args.start, int(args.wordcount)))
+print(generate_text(args.start, int(args.wordcount))) # The actual output part itself
