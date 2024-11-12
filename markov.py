@@ -18,6 +18,7 @@ Build the Markov Chain
 
 TODO: Handle punctuation and capitalization for better results
 """
+text = text.lower() # Makes the text lower case so that way the generator handl
 words = text.split()
 for i in range(len(words) - 1):
     current_word = words[i]
@@ -54,7 +55,11 @@ def generate_text(start_word, num_words):
     raw = " ".join(result) # All this ensures that the sentences start with a capitol letter
     raw = raw.split('.')
     raw = [raw.capitalize() for raw in raw]
-    return ' '.join(raw)  # Returns the function
+    if ''.join(raw)[-1] == '.':
+        return ''.join(raw)  # Returns the function and verifies it ends with a period
+    else:
+        return ''.join(raw)+'.'
+    
 
 
 """
